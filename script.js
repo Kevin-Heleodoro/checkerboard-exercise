@@ -6,16 +6,12 @@ function checkerBoard() {
     
     for(let i = 0; i < 63; i++) {
     let div = document.createElement('div');
-
+    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
     div.style.width = '11.1%';
     div.style.float = 'left';
     div.style.paddingBottom = '11.1%'    
+    div.style.backgroundColor = "#" + randomColor;
 
-    if (i % 2 === 0) {
-        div.style.backgroundColor = 'red'
-    } else {
-        div.style.backgroundColor = 'black'
-    }
     body.appendChild(div)
     }
 }
