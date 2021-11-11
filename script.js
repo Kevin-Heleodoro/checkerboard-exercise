@@ -1,10 +1,31 @@
 // Your JS goes here
 checkerBoard()
+musicPlay()
+
+function musicPlay() {
+    let button = document.createElement('button');
+    let body = document.getElementsByTagName('div')[0];
+    body.appendChild(button);
+
+    button.onclick = () => {
+        const audioContext = new AudioContext();
+        const element = document.querySelector(audio);
+        const source = audioContext.createMediaElementSource(element);
+        source.connect(audioContext.destination)
+        element.play();
+    }
+
+    // if(userChoice === true) {
+    // const audioContext = new AudioContext();
+    // const element = document.querySelector(audio);
+    // const source = audioContext.createMediaElementSource(element);
+    // source.connect(audioContext.destination)
+    // audio.play();
+    // }
+}
 
 function checkerBoard() {
     let body = document.getElementsByTagName('body')[0];
-    // body.style.background = 'linear-gradient(to right, rgba(21, 21, 213, 0), rgba(21, 21, 213, 1))'; FAILED 
-    // body.style.background = 'linear-gradient(135deg, blue, yellow)';
     for(let i = 0; i < 63; i++) {
     let div = document.createElement('div');
     let randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -14,13 +35,6 @@ function checkerBoard() {
     div.style.backgroundColor = "#" + randomColor;
     div.classList.add('square')
 
-    // if(i % 2 === 0){
-    //     // div.style.backgroundColor = `rgba(14, 14, 240, ${.02 * i})`
-    //     // div.style.backgroundColor = 'blue' FAILED
-    // } else {
-    //     // div.style.backgroundColor = `rgba(249, 249, 41, ${.02 * i})`
-    //     // div.style.backgroundColor = 'yellow' FAILED
-    // }
     body.appendChild(div)
     }
     
@@ -29,14 +43,11 @@ function checkerBoard() {
 
 setInterval(function flashingColors() {
     let div = document.querySelectorAll('div');
-    let body = document.getElementsByTagName('body');
-    
 
     div.forEach((elem) => {
         let randomColor = Math.floor(Math.random() * 16777215).toString(16);
         elem.style.backgroundColor = "#" + randomColor;
     })
-    // body.appendChild(div);
 }, 2000);
 
 // function checkerBoard() {
